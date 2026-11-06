@@ -1,0 +1,241 @@
+restaurant_id,city_id,restaurant_name,cuisine,base_prep_min
+1,1,Tandoor Bhavan,Burgers,12.9
+2,1,Slice House,Desserts,6.8
+3,1,Chaat Dhaba,Desserts,12.3
+4,1,Madras Palace,South Indian,9.6
+5,1,Chaat Express,South Indian,11.2
+6,1,Green Corner,Healthy,9.5
+7,1,Slice Kitchen,North Indian,6.5
+8,1,Royal Point,Healthy,11.1
+9,1,Curry Bhavan,Desserts,13.8
+10,1,Wok Corner,Street Food,12.2
+11,1,Madras Junction,Chinese,6.4
+12,1,Chaat Palace,South Indian,11.5
+13,1,Green Bhavan,Chinese,8.6
+14,1,Golden Dhaba,Chinese,9.8
+15,1,Madras Junction,Pizza,9.8
+16,1,Tandoor Express,Biryani,11.4
+17,1,Golden Corner,South Indian,11.6
+18,1,Punjabi House,Biryani,12.7
+19,1,Slice Point,Healthy,8.3
+20,1,Wok Kitchen,Desserts,7.1
+21,1,Punjabi Junction,Healthy,12.3
+22,1,Spice Bhavan,Burgers,11.6
+23,1,Biryani Bhavan,Burgers,10.5
+24,1,Slice House,South Indian,6.9
+25,1,Slice Hub,Burgers,10.5
+26,1,Chaat House,Desserts,11.1
+27,1,Royal Palace,North Indian,8.4
+28,1,Royal Hub,North Indian,9.5
+29,1,Golden Kitchen,Biryani,12.8
+30,1,Slice House,Biryani,6.5
+31,1,Punjabi Kitchen,Street Food,11.3
+32,1,Biryani Junction,Burgers,12.3
+33,1,Golden Hub,Chinese,12.5
+34,1,Slice Express,South Indian,6.2
+35,1,Tandoor House,Desserts,9.7
+36,1,Mumbai Bhavan,South Indian,10.0
+37,1,Golden Junction,Pizza,9.6
+38,1,Mumbai Junction,Chinese,8.4
+39,1,Mumbai Hub,Burgers,6.7
+40,1,Wok Express,South Indian,13.7
+41,2,Curry Dhaba,Healthy,6.9
+42,2,Tandoor Bhavan,North Indian,11.3
+43,2,Mumbai Corner,Street Food,11.4
+44,2,Madras Bhavan,Chinese,13.2
+45,2,Punjabi Bhavan,Burgers,8.9
+46,2,Biryani Palace,Biryani,7.3
+47,2,Golden Junction,North Indian,9.5
+48,2,Golden Bhavan,Chinese,11.8
+49,2,Curry Palace,Street Food,12.2
+50,2,Golden Hub,Pizza,9.0
+51,2,Urban Dhaba,North Indian,13.6
+52,2,Mumbai Corner,South Indian,12.8
+53,2,Green Hub,South Indian,10.7
+54,2,Tandoor House,Desserts,6.1
+55,2,Tandoor Corner,Desserts,8.4
+56,2,Punjabi Dhaba,Pizza,9.5
+57,2,Spice Express,Pizza,12.3
+58,2,Green Palace,North Indian,14.0
+59,2,Spice Point,Desserts,12.7
+60,2,Biryani House,North Indian,14.0
+61,2,Spice Hub,South Indian,6.7
+62,2,Urban Hub,Street Food,6.2
+63,2,Dosa Kitchen,Pizza,12.2
+64,2,Curry Point,South Indian,13.3
+65,2,Biryani Hub,Street Food,6.0
+66,2,Spice Junction,North Indian,10.8
+67,2,Golden Point,Street Food,12.8
+68,2,Dosa Kitchen,North Indian,12.4
+69,2,Golden Dhaba,South Indian,11.6
+70,2,Madras Point,Healthy,6.3
+71,2,Slice Kitchen,South Indian,10.0
+72,2,Tandoor Palace,Desserts,11.0
+73,2,Tandoor Point,Pizza,11.9
+74,2,Curry House,South Indian,8.2
+75,2,Tandoor Bhavan,Pizza,10.9
+76,2,Golden Palace,North Indian,10.9
+77,2,Spice House,South Indian,11.7
+78,2,Green Corner,South Indian,6.7
+79,2,Madras Junction,Chinese,9.7
+80,2,Golden Palace,Healthy,11.1
+81,3,Madras Palace,Street Food,6.3
+82,3,Slice Dhaba,Street Food,6.8
+83,3,Biryani House,North Indian,6.5
+84,3,Dosa Dhaba,Pizza,10.1
+85,3,Madras Express,North Indian,6.9
+86,3,Spice Hub,Chinese,6.5
+87,3,Green Hub,Pizza,8.4
+88,3,Dosa Corner,Chinese,9.3
+89,3,Curry House,Biryani,12.9
+90,3,Tandoor Junction,North Indian,10.1
+91,3,Biryani Corner,North Indian,9.5
+92,3,Biryani Palace,Healthy,12.7
+93,3,Chaat Kitchen,Biryani,7.9
+94,3,Biryani Dhaba,Pizza,11.5
+95,3,Wok Kitchen,Desserts,13.4
+96,3,Biryani Corner,North Indian,9.7
+97,3,Punjabi Bhavan,South Indian,6.4
+98,3,Curry Express,South Indian,13.4
+99,3,Tandoor House,Street Food,6.3
+100,3,Curry Junction,North Indian,11.0
+101,3,Chaat Kitchen,North Indian,10.7
+102,3,Royal Hub,Healthy,6.0
+103,3,Biryani Point,Pizza,7.3
+104,3,Urban Point,Desserts,12.8
+105,3,Biryani Kitchen,Biryani,9.6
+106,3,Green Dhaba,Burgers,13.9
+107,3,Tandoor Express,Desserts,8.5
+108,3,Punjabi Palace,Healthy,10.8
+109,3,Biryani Kitchen,Pizza,8.5
+110,3,Slice Point,North Indian,6.2
+111,3,Madras Express,Chinese,7.3
+112,3,Spice Hub,Desserts,11.7
+113,3,Biryani Bhavan,Healthy,13.1
+114,3,Biryani Junction,Burgers,7.0
+115,3,Madras Junction,Desserts,7.4
+116,3,Mumbai Bhavan,Pizza,13.9
+117,3,Dosa House,Street Food,13.9
+118,3,Spice Palace,Burgers,7.0
+119,3,Royal Point,North Indian,10.3
+120,3,Green Junction,Burgers,8.2
+121,4,Punjabi Kitchen,Chinese,13.4
+122,4,Green Express,Healthy,13.8
+123,4,Spice Bhavan,Street Food,12.1
+124,4,Madras Junction,Pizza,9.7
+125,4,Mumbai Kitchen,Burgers,8.3
+126,4,Urban Express,Biryani,10.7
+127,4,Wok Corner,Biryani,12.5
+128,4,Dosa Kitchen,Healthy,7.3
+129,4,Wok House,North Indian,12.4
+130,4,Wok Junction,Healthy,7.1
+131,4,Mumbai Bhavan,Burgers,9.1
+132,4,Tandoor Corner,Street Food,7.5
+133,4,Golden Junction,North Indian,11.0
+134,4,Slice Point,Street Food,13.8
+135,4,Urban House,Street Food,12.3
+136,4,Curry Kitchen,Biryani,13.1
+137,4,Dosa Hub,Pizza,12.7
+138,4,Tandoor Palace,South Indian,9.4
+139,4,Chaat Palace,Biryani,11.5
+140,4,Chaat Bhavan,Burgers,13.9
+141,4,Spice Dhaba,North Indian,6.8
+142,4,Chaat Hub,Desserts,13.8
+143,4,Biryani Express,Biryani,9.4
+144,4,Slice Kitchen,North Indian,11.4
+145,4,Madras Express,Biryani,12.7
+146,4,Madras Dhaba,Healthy,9.3
+147,4,Wok Express,Biryani,12.4
+148,4,Madras Junction,Pizza,13.1
+149,4,Biryani Junction,Burgers,6.8
+150,4,Green Express,South Indian,10.3
+151,4,Biryani House,Pizza,6.0
+152,4,Spice House,Chinese,12.2
+153,4,Tandoor House,Chinese,12.6
+154,4,Urban Express,South Indian,7.2
+155,4,Spice Point,Biryani,10.3
+156,4,Punjabi Corner,Healthy,6.7
+157,4,Slice Express,Pizza,8.1
+158,4,Madras Express,Desserts,10.0
+159,4,Royal Bhavan,Desserts,8.9
+160,4,Slice Corner,South Indian,7.7
+161,5,Spice Kitchen,Burgers,7.2
+162,5,Spice Dhaba,North Indian,7.6
+163,5,Curry Palace,Chinese,10.3
+164,5,Green Hub,Burgers,7.6
+165,5,Chaat Point,Healthy,12.9
+166,5,Urban Hub,Street Food,8.8
+167,5,Tandoor House,Pizza,9.5
+168,5,Dosa Hub,Street Food,9.0
+169,5,Biryani Bhavan,South Indian,7.5
+170,5,Royal Hub,Biryani,11.2
+171,5,Curry Hub,South Indian,7.8
+172,5,Slice Bhavan,Desserts,7.4
+173,5,Mumbai Dhaba,Desserts,6.9
+174,5,Curry Palace,Pizza,10.2
+175,5,Spice Palace,Street Food,14.0
+176,5,Slice House,Pizza,9.8
+177,5,Green Corner,Street Food,10.7
+178,5,Tandoor Kitchen,Biryani,11.1
+179,5,Urban House,Burgers,9.8
+180,5,Golden Corner,Street Food,9.8
+181,5,Mumbai House,Healthy,11.2
+182,5,Punjabi Bhavan,Healthy,9.4
+183,5,Slice Hub,South Indian,11.0
+184,5,Punjabi Express,Chinese,11.3
+185,5,Madras Hub,Street Food,9.0
+186,5,Golden Palace,Chinese,12.5
+187,5,Wok Palace,North Indian,9.7
+188,5,Madras Palace,South Indian,12.0
+189,5,Wok Junction,Chinese,11.0
+190,5,Curry Junction,Desserts,13.2
+191,5,Mumbai Kitchen,Burgers,13.6
+192,5,Tandoor Point,South Indian,7.6
+193,5,Wok Kitchen,Biryani,13.1
+194,5,Chaat Bhavan,Desserts,11.7
+195,5,Punjabi Junction,Desserts,9.8
+196,5,Wok Point,South Indian,8.2
+197,5,Dosa Express,Chinese,10.4
+198,5,Tandoor Point,Desserts,6.6
+199,5,Slice Corner,Biryani,12.0
+200,5,Madras Junction,Healthy,9.6
+201,6,Slice Hub,South Indian,7.1
+202,6,Urban Express,Desserts,11.4
+203,6,Royal Hub,Burgers,9.6
+204,6,Tandoor House,Chinese,6.7
+205,6,Golden Kitchen,Biryani,11.9
+206,6,Slice Bhavan,Biryani,12.6
+207,6,Slice Palace,North Indian,9.8
+208,6,Madras Palace,Pizza,11.0
+209,6,Mumbai Dhaba,Street Food,10.2
+210,6,Chaat Hub,Burgers,11.9
+211,6,Tandoor House,Chinese,9.9
+212,6,Chaat Palace,Street Food,9.9
+213,6,Royal Corner,Street Food,9.6
+214,6,Golden Palace,South Indian,7.7
+215,6,Curry House,Burgers,9.5
+216,6,Spice Express,Desserts,11.9
+217,6,Mumbai House,South Indian,7.2
+218,6,Royal Junction,Street Food,7.3
+219,6,Slice Hub,South Indian,11.1
+220,6,Biryani Express,Chinese,12.1
+221,6,Curry Kitchen,Biryani,10.0
+222,6,Green Junction,Desserts,12.8
+223,6,Wok Dhaba,Healthy,8.3
+224,6,Dosa Express,Biryani,8.1
+225,6,Urban Palace,Desserts,13.9
+226,6,Golden Junction,Pizza,11.1
+227,6,Mumbai Point,Chinese,7.6
+228,6,Green Express,Pizza,12.7
+229,6,Dosa Express,Street Food,13.9
+230,6,Slice Corner,Street Food,13.2
+231,6,Royal Bhavan,Street Food,8.6
+232,6,Biryani Hub,Pizza,10.5
+233,6,Curry Palace,Burgers,9.3
+234,6,Urban Hub,Desserts,8.7
+235,6,Slice Express,Pizza,7.5
+236,6,Tandoor Palace,Healthy,9.6
+237,6,Spice Kitchen,North Indian,10.4
+238,6,Madras Junction,North Indian,8.5
+239,6,Tandoor Junction,Biryani,8.2
+240,6,Urban Hub,North Indian,6.4

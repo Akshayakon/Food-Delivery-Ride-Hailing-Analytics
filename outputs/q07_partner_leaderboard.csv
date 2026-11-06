@@ -1,0 +1,19 @@
+city_name,volume_rank,speed_rank,partner_id,partner_name,deliveries,avg_delivery_min,avg_rating,fee_earned_inr
+Bengaluru,1,22,13,Sanjay Khan,894,34.6,4.13,38098.0
+Bengaluru,2,21,22,Vivaan Kumar,565,34.5,4.11,24123.0
+Bengaluru,3,14,60,Prakash Yadav,562,33.7,4.13,24040.0
+Chennai,1,11,298,Sanjay Iyer,437,30.3,4.31,18830.0
+Chennai,2,33,295,Aarav Gupta,313,33.8,4.06,13664.0
+Chennai,3,6,268,Sanjay Sharma,305,29.8,4.2,13199.0
+Delhi NCR,1,2,144,Imran Patil,696,30.3,4.2,29562.0
+Delhi NCR,2,13,173,Rohan Naidu,554,32.1,4.23,24330.0
+Delhi NCR,3,3,170,Aarav Iyer,543,30.5,4.18,23166.0
+Hyderabad,1,14,219,Arjun Das,432,31.7,4.19,17865.0
+Hyderabad,2,8,196,Manoj Iyer,417,31.1,4.17,17230.0
+Hyderabad,3,14,240,Vivaan Reddy,411,31.7,4.25,17364.0
+Mumbai,1,19,94,Ravi Khan,829,33.2,4.1,34904.0
+Mumbai,2,22,75,Prakash Khan,725,33.6,4.08,30874.0
+Mumbai,3,24,78,Faisal Kumar,585,33.8,4.2,24767.0
+Pune,1,19,325,Sanjay Iyer,292,31.7,4.24,12753.0
+Pune,2,12,320,Prakash Naidu,261,31.0,4.31,11259.0
+Pune,3,7,337,Vikram Singh,256,30.4,4.35,11043.0

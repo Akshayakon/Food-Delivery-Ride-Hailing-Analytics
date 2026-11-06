@@ -1,0 +1,7 @@
+city_name,delivered_orders,avg_min,p50_min,p90_min,pct_within_30min,pct_over_45min,speed_rank_1_fastest
+Chennai,9113,30.9,29.9,41.3,50.9,5.4,1
+Pune,8295,31.5,30.5,42.6,47.8,6.8,2
+Hyderabad,11622,31.8,30.9,42.7,45.7,6.8,3
+Delhi NCR,16457,32.2,31.1,44.0,45.0,8.6,4
+Mumbai,15607,33.5,32.3,45.6,39.2,10.9,5
+Bengaluru,16466,34.3,33.0,46.8,36.4,12.7,6

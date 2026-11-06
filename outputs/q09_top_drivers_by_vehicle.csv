@@ -1,0 +1,13 @@
+vehicle_type,earnings_rank,driver_id,driver_name,city_name,completed_rides,earnings_inr,avg_rating
+auto,1,77,Ravi Iyer,Bengaluru,181,30553.0,4.39
+auto,2,243,Aditya Naidu,Delhi NCR,157,25394.0,4.42
+auto,3,3,Aditya Nair,Bengaluru,133,25356.0,4.48
+bike,1,233,Aarav Singh,Delhi NCR,347,40194.0,4.37
+bike,2,85,Faisal Kumar,Bengaluru,257,30359.0,4.37
+bike,3,230,Rohan Gupta,Delhi NCR,231,26641.0,4.37
+cab_mini,1,70,Ravi Yadav,Bengaluru,377,81119.0,4.45
+cab_mini,2,353,Arjun Naidu,Hyderabad,262,51520.0,4.44
+cab_mini,3,271,Karthik Gupta,Delhi NCR,228,51429.0,4.4
+cab_sedan,1,147,Imran Naidu,Mumbai,217,53369.0,4.55
+cab_sedan,2,68,Vikram Gupta,Bengaluru,173,44413.0,4.36
+cab_sedan,3,253,Vikram Reddy,Delhi NCR,162,40285.0,4.3

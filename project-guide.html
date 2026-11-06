@@ -1,0 +1,398 @@
+<title>Food and Ride Analytics Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one long storybook page. Sticky chapter strip on top, each chapter is a wide band with a big kid-friendly lead line and a plain-words explanation underneath. */
+:root{
+  --bg:#f2f7f7; --surface:#ffffff; --fg:#14313a; --muted:#52707a; --line:#d3e1e3;
+  --accent:#e8590c; --accent-soft:#ffe8d9; --teal:#0f7c8a; --teal-soft:#d8f0f2;
+  --yellow:#f6c026; --yellow-soft:#fff3c4; --code-bg:#12282f; --code-fg:#d8f0f2;
+  --display:'Baloo 2','Trebuchet MS',system-ui,sans-serif;
+  --body:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1e23; --surface:#142c33; --fg:#e4f2f4; --muted:#93b3bb; --line:#264650;
+  --accent:#ff8a4c; --accent-soft:#3b2417; --teal:#4cc3d1; --teal-soft:#14383f;
+  --yellow:#f6c026; --yellow-soft:#3a3010; --code-bg:#091519; --code-fg:#d8f0f2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1e23; --surface:#142c33; --fg:#e4f2f4; --muted:#93b3bb; --line:#264650;
+  --accent:#ff8a4c; --accent-soft:#3b2417; --teal:#4cc3d1; --teal-soft:#14383f;
+  --yellow:#f6c026; --yellow-soft:#3a3010; --code-bg:#091519; --code-fg:#d8f0f2; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:980px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:600}
+p{margin:0}
+a{color:var(--teal)}
+code,.mono{font-family:var(--mono);font-size:.88em}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
+  margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+nav ul{list-style:none;margin:0 auto;padding:10px 0;display:flex;gap:8px;overflow-x:auto;max-width:980px;scrollbar-width:thin}
+nav a{white-space:nowrap;text-decoration:none;color:var(--fg);font-weight:800;font-size:.9rem;padding:6px 14px;border-radius:99px;background:var(--surface);border:1px solid var(--line);display:block}
+nav a:hover{background:var(--yellow-soft)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+
+.hero{padding-block:48px 24px;display:grid;gap:18px}
+.hero .tag{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.hero p.lead{font-size:1.25rem;max-width:44em}
+.hero .mark{background:linear-gradient(transparent 62%,var(--yellow) 62%);padding:0 .1em}
+section{padding-block:44px 8px;display:grid;gap:20px}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.kid{font-size:1.2rem;font-weight:800;background:var(--yellow-soft);border-radius:16px;padding:16px 20px;max-width:46em}
+.kid small{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600}
+.grown{color:var(--muted);max-width:46em}
+.grown b{color:var(--fg)}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:8px;align-content:start;min-width:0}
+.card .ico{font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--teal)}
+.card p{font-size:.97rem;color:var(--muted)}
+.card p b{color:var(--fg)}
+
+pre{background:var(--code-bg);color:var(--code-fg);border-radius:12px;padding:16px;margin:0;overflow-x:auto;font-family:var(--mono);font-size:.88rem;line-height:1.6}
+.cmd{position:relative}
+.copy{position:absolute;top:8px;right:8px;background:var(--yellow);color:#14313a;border:0;border-radius:8px;padding:5px 12px;font:800 .78rem var(--body);cursor:pointer}
+.cmd pre{padding-right:90px}
+
+/* folder tree */
+.tree{display:grid;gap:10px}
+.folder{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:grid;gap:6px;min-width:0}
+.folder .path{font-family:var(--mono);font-weight:600;color:var(--accent);font-size:.95rem;overflow-wrap:anywhere}
+.folder .what{font-weight:800}
+.folder p.kidline{color:var(--muted);font-size:.97rem}
+.folder ul{margin:4px 0 0;padding-left:1.1em;color:var(--muted);font-size:.9rem}
+.folder ul code{color:var(--fg)}
+
+/* steps */
+.steps{display:grid;gap:16px;counter-reset:s}
+.step{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--display);font-weight:800;font-size:1.5rem;width:44px;height:44px;border-radius:50%;background:var(--teal);color:var(--surface);display:grid;place-items:center}
+.step .body{display:grid;gap:8px;min-width:0}
+.step .kidline{font-weight:800}
+.step .tech{color:var(--muted);font-size:.95rem}
+.step .tech code,.grown code,.card code,td code{background:var(--teal-soft);color:var(--fg);padding:1px 6px;border-radius:5px}
+.step .saw{font-family:var(--mono);font-size:.8rem;background:var(--code-bg);color:var(--code-fg);padding:10px 12px;border-radius:8px;overflow-x:auto;white-space:pre}
+
+/* diagram */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.flow .node{flex:1 1 130px;background:var(--surface);border:2px solid var(--teal);border-radius:12px;padding:12px;text-align:center;min-width:0}
+.flow .node b{display:block;font-family:var(--display);font-size:1.05rem}
+.flow .node span{font-size:.82rem;color:var(--muted);line-height:1.3;display:block}
+.flow .arr{align-self:center;font-family:var(--display);font-weight:800;color:var(--accent);font-size:1.4rem}
+@media(max-width:640px){.flow .arr{display:none}}
+
+/* table */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.93rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--mono);color:var(--accent);font-weight:600;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:96px minmax(0,1fr) 64px;gap:10px;align-items:center;font-size:.92rem}
+.bar .track{background:var(--teal-soft);border-radius:99px;height:16px;overflow:hidden}
+.bar .fill{height:100%;background:var(--teal);border-radius:99px}
+.bar .fill.hot{background:var(--accent)}
+.bar b{font-variant-numeric:tabular-nums;text-align:right}
+.chartcap{font-size:.88rem;color:var(--muted)}
+
+.finding{display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:12px;padding:14px 18px}
+.finding b{font-family:var(--display);font-size:1.1rem}
+.finding p{color:var(--muted);font-size:.96rem}
+dl{display:grid;gap:10px;margin:0}
+dl div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+dt{font-weight:800;color:var(--teal)}
+dd{margin:2px 0 0;color:var(--muted);font-size:.96rem}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+@media(max-width:560px){.step{grid-template-columns:1fr}.bar{grid-template-columns:78px minmax(0,1fr) 54px}body{font-size:16px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<nav aria-label="Chapters"><ul>
+  <li><a href="#what">What is it</a></li>
+  <li><a href="#why">Why run it</a></li>
+  <li><a href="#folders">Folders</a></li>
+  <li><a href="#run">How to run</a></li>
+  <li><a href="#steps">What happens</a></li>
+  <li><a href="#queries">14 questions</a></li>
+  <li><a href="#found">What we found</a></li>
+  <li><a href="#words">Big words</a></li>
+</ul></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="tag">Food Delivery &amp; Ride-Hailing Analytics · India · Jan–Mar 2026</span>
+  <h1>A project that asks a pile of pretend orders <span class="mark">14 smart questions</span></h1>
+  <p class="lead">Every explanation here comes in two parts. The yellow box is the five-year-old version. The grey text under it is the grown-up version with the real names of things.</p>
+</header>
+
+<section id="what">
+  <span class="kicker">The big picture</span>
+  <h2>What is this project?</h2>
+  <div class="kid"><small>Like you're five</small>Imagine a giant toy city. Kids in the city order pizza and ask for taxi rides all day long. Someone wrote down every single order in a giant notebook. This project reads the notebook and answers questions like "when is everybody hungry?" and "does rain make dinner late?"</div>
+  <p class="grown"><b>Grown-up version:</b> It is an end-to-end SQL analytics project modelled on Swiggy, Zomato, Uber and Ola across six metros: Bengaluru, Mumbai, Delhi NCR, Hyderabad, Chennai and Pune. It covers 90 days (Q1 2026). The data is <b>synthetic</b>, which means a computer program invented it with a fixed random seed. Busy lunch hours, rainy-day delays and surge pricing were built in on purpose, so the answers are interesting and the same every time. The numbers are not real company figures.</p>
+  <div class="grid">
+    <div class="card"><span class="ico">80,000</span><p><b>food orders</b> placed in the toy city</p></div>
+    <div class="card"><span class="ico">49,000</span><p><b>ride requests</b> from people wanting a cab, auto or bike</p></div>
+    <div class="card"><span class="ico">240 · 360 · 600</span><p><b>restaurants, delivery partners and drivers</b> doing the work</p></div>
+    <div class="card"><span class="ico">6 cities · 90 days</span><p>plus a <b>weather diary</b> that says if each city was rainy each day</p></div>
+  </div>
+</section>
+
+<section id="why">
+  <span class="kicker">The point of it all</span>
+  <h2>Why would anyone run it?</h2>
+  <div class="kid"><small>Like you're five</small>If you run an ice-cream truck, you want to know when the line is longest so you can bring more helpers. This project finds the "long line" times for pizza and taxis, and finds out what makes things slow, like rain.</div>
+  <div class="grid">
+    <div class="card"><h3>1. Find the rush hours</h3><p>Lunch and dinner carry almost half of all food orders. A company can put more delivery partners on the road at those times.</p></div>
+    <div class="card"><h3>2. Find what slows things down</h3><p>Rush hour adds about 6 minutes to a delivery. Rain adds 3 to 4 minutes. Bengaluru is the slowest city.</p></div>
+    <div class="card"><h3>3. Test price rules</h3><p>When taxi prices go up (surge), more riders get no ride. That helps decide if surge should be capped.</p></div>
+    <div class="card"><h3>4. Show off SQL skills</h3><p>Each query practises a technique: window functions, rankings, rolling averages, growth over time and anomaly detection. It works as a portfolio piece.</p></div>
+  </div>
+</section>
+
+<section id="folders">
+  <span class="kicker">Tour of the house</span>
+  <h2>What is in every folder, and what is it for?</h2>
+  <div class="kid"><small>Like you're five</small>Think of the project as a house. One room makes the pretend orders, one room is the filing cabinet, one room holds the questions, and one room shows the answers as pictures.</div>
+  <p class="grown">The project root is <code>Food Delivery  Ride-Hailing Analytics\Food Delivery  Ride-Hailing Analytics\</code>. These are its contents.</p>
+
+  <div class="tree">
+    <div class="folder"><span class="path">README.md</span><span class="what">The instruction booklet</span>
+      <p class="kidline">It is the page you read first. It says what the project is, how to start it, and what the answers were.</p>
+      <ul><li>Run command, project layout, a table of all 14 queries, key findings, recommendations and limitations.</li></ul></div>
+
+    <div class="folder"><span class="path">generate_data.py</span><span class="what">The toy-city factory</span>
+      <p class="kidline">It invents the whole pretend city: every order, ride, restaurant and rainy day. It uses a "magic seed" number so it invents the exact same city every time.</p>
+      <ul><li>Writes the seven CSV files into <code>data/</code>.</li><li>Builds in realistic patterns: lunch, dinner and commute peaks, weekend lift, rain effects, city traffic and partner productivity.</li></ul></div>
+
+    <div class="folder"><span class="path">data/</span><span class="what">The raw notebooks (CSV files)</span>
+      <p class="kidline">These are the long lists the factory writes down. Each file is one list, like a spreadsheet.</p>
+      <ul>
+        <li><code>cities.csv</code> – the 6 cities, with a traffic factor for each</li>
+        <li><code>restaurants.csv</code> – 240 restaurants, their cuisine and how long they take to cook</li>
+        <li><code>delivery_partners.csv</code> – 360 delivery riders</li>
+        <li><code>drivers.csv</code> – 600 taxi, auto and bike drivers</li>
+        <li><code>food_orders.csv</code> – about 80,000 food orders with times, fees, status and rating</li>
+        <li><code>rides.csv</code> – about 49,000 ride requests with surge, wait time, fare and status</li>
+        <li><code>weather.csv</code> – one row per city per day: rainy or not</li>
+      </ul></div>
+
+    <div class="folder"><span class="path">sql/</span><span class="what">The rulebook for the filing cabinet</span>
+      <p class="kidline">This room holds the plan for the cabinet and the questions you can ask it.</p>
+      <ul>
+        <li><code>schema.sql</code> – builds 7 tables with rules (for example a ride must be "completed" or one of three cancel types) and 7 indexes that make searches fast</li>
+        <li><code>queries/</code> – 14 files, <code>q01</code> to <code>q14</code>. One question each, written in SQL</li>
+      </ul></div>
+
+    <div class="folder"><span class="path">food_ride.db</span><span class="what">The filing cabinet (SQLite database)</span>
+      <p class="kidline">All the notebooks, neatly put into one cabinet so you can ask questions fast. The pipeline throws it away and rebuilds it fresh on each run.</p>
+      <ul><li>One single file. You can open it with DB Browser for SQLite or the VS Code SQLite extension.</li></ul></div>
+
+    <div class="folder"><span class="path">run_pipeline.py</span><span class="what">The boss button</span>
+      <p class="kidline">You press this one button and it does everything: makes the data, files it, asks all 14 questions and draws the pictures.</p>
+      <ul><li>Uses pandas for tables, sqlite3 for the database and matplotlib for charts.</li></ul></div>
+
+    <div class="folder"><span class="path">outputs/</span><span class="what">The answer sheets</span>
+      <p class="kidline">Each question gets its own answer sheet here. The sheets are named after the question.</p>
+      <ul><li><code>q01_kpi_summary.csv</code> through <code>q14_rain_impact_food.csv</code>, 14 files in total</li></ul></div>
+
+    <div class="folder"><span class="path">outputs/charts/</span><span class="what">The picture wall</span>
+      <p class="kidline">Some answers are easier to see than read, so seven are drawn as pictures.</p>
+      <ul>
+        <li><code>01_hourly_food_peak.png</code> – orders by hour of day</li>
+        <li><code>02_daily_rolling_trend.png</code> – daily orders with a smooth 7-day line</li>
+        <li><code>03_city_delivery_time.png</code> – median, mean and p90 delivery time per city</li>
+        <li><code>04_weekday_hour_heatmap.png</code> – hot and cold map of week and hour</li>
+        <li><code>05_hourly_rides_surge.png</code> – ride demand and surge by hour</li>
+        <li><code>06_surge_vs_completion.png</code> – does higher price mean fewer finished rides</li>
+        <li><code>07_daypart_city.png</code> – lunch, dinner and other times by city</li>
+      </ul></div>
+
+    <div class="folder"><span class="path">__pycache__/</span><span class="what">Python's scratch paper</span>
+      <p class="kidline">Python leaves little notes here so it starts faster next time. You can ignore it and even delete it.</p></div>
+  </div>
+</section>
+
+<section id="run">
+  <span class="kicker">Do it yourself</span>
+  <h2>How to run it</h2>
+  <div class="kid"><small>Like you're five</small>First you give the computer its crayons (install). Then you press the big button (run). Then you go look at the pictures it drew.</div>
+  <p class="grown">You need Python 3.9 or newer and SQLite 3.25 or newer, because older SQLite cannot do window functions. Both were fine on your machine.</p>
+
+  <h3>Once only: get into the folder and install the tools</h3>
+  <div class="cmd"><pre id="c1">cd "C:\Users\saiak\Downloads\Food Delivery  Ride-Hailing Analytics\Food Delivery  Ride-Hailing Analytics"
+pip install pandas numpy matplotlib</pre><button class="copy" data-t="c1" type="button">Copy</button></div>
+
+  <h3>Run everything with one command</h3>
+  <div class="cmd"><pre id="c2">python run_pipeline.py</pre><button class="copy" data-t="c2" type="button">Copy</button></div>
+
+  <h3>Or do just one piece</h3>
+  <div class="cmd"><pre id="c3"># only remake the CSV files in data/
+python generate_data.py
+
+# ask one question by hand (swap in any q01 to q14 file)
+python -c "import sqlite3,pandas as pd; c=sqlite3.connect('food_ride.db'); print(pd.read_sql(open('sql/queries/q04_delivery_time_by_city.sql').read(), c))"</pre><button class="copy" data-t="c3" type="button">Copy</button></div>
+  <p class="grown">After it finishes, open <code>outputs/charts/</code> to see the pictures and <code>outputs/</code> for the answer CSVs.</p>
+</section>
+
+<section id="steps">
+  <span class="kicker">While it runs</span>
+  <h2>What happens when you press run, step by step</h2>
+  <div class="kid"><small>Like you're five</small>The computer follows a recipe with five steps. It talks out loud while it cooks. Here is what it says, and what each step means.</div>
+
+  <div class="flow" aria-label="Pipeline overview">
+    <div class="node"><b>Make data</b><span>generate_data</span></div><div class="arr">→</div>
+    <div class="node"><b>Build DB</b><span>schema + load</span></div><div class="arr">→</div>
+    <div class="node"><b>Ask 14 questions</b><span>sql/queries</span></div><div class="arr">→</div>
+    <div class="node"><b>Save answers</b><span>outputs/*.csv</span></div><div class="arr">→</div>
+    <div class="node"><b>Draw pictures</b><span>outputs/charts</span></div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="body">
+      <span class="kidline">The computer invents the toy city.</span>
+      <p class="tech"><code>build_db()</code> calls <code>generate_data.main()</code>. It writes seven CSV files into <code>data/</code> from a fixed random seed, so you get the same 79,992 orders every run.</p>
+    </div></div>
+
+    <div class="step"><div class="body">
+      <span class="kidline">It throws out the old cabinet and builds a new empty one.</span>
+      <p class="tech">It deletes <code>food_ride.db</code> if it exists. Then it runs <code>sql/schema.sql</code>, which creates the 7 tables, their rules and the indexes.</p>
+    </div></div>
+
+    <div class="step"><div class="body">
+      <span class="kidline">It puts every notebook into the cabinet.</span>
+      <p class="tech">pandas reads each CSV and appends it into its table. This is the part that prints the row counts you saw.</p>
+      <div class="saw">cities                   6 rows
+weather                540 rows
+food_orders         79,992 rows
+rides               48,767 rows
+restaurants            240 rows
+delivery_partners      360 rows
+drivers                600 rows</div>
+    </div></div>
+
+    <div class="step"><div class="body">
+      <span class="kidline">It asks all 14 questions, one after another.</span>
+      <p class="tech"><code>run_queries()</code> loops over <code>q01…q14</code>. Each SQL file runs against the database. The result becomes a table, is saved as a CSV in <code>outputs/</code>, and its first 12 rows are printed on screen. Each block starts with a line like this.</p>
+      <div class="saw">=== q04_delivery_time_by_city  (6 rows) ===
+city_name  delivered_orders  avg_min  p50_min  p90_min ...
+  Chennai              9113     30.9     29.9     41.3 ...
+Bengaluru             16466     34.3     33.0     46.8 ...</div>
+    </div></div>
+
+    <div class="step"><div class="body">
+      <span class="kidline">It draws seven pictures from the answers.</span>
+      <p class="tech"><code>charts()</code> uses matplotlib to draw bar charts, line charts and a heatmap. It saves them as PNG files in <code>outputs/charts/</code>. Red marks peak hours and blue-grey marks normal hours.</p>
+      <div class="saw">Done. DB: food_ride.db | CSVs + charts in ...\outputs</div>
+    </div></div>
+  </div>
+</section>
+
+<section id="queries">
+  <span class="kicker">The questions</span>
+  <h2>The 14 questions, in kid words</h2>
+  <div class="kid"><small>Like you're five</small>Each file in <code>sql/queries</code> is one question. SQL is just a very polite way to ask the cabinet a question.</div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Query</th><th>Question for a five-year-old</th><th>SQL trick it practises</th></tr></thead>
+    <tbody>
+      <tr><td>q01</td><td>How many orders and rides did we get in total, and how many went wrong?</td><td><code>UNION ALL</code>, conditional totals</td></tr>
+      <tr><td>q02</td><td>Which hours of the day is everybody hungry?</td><td><code>DENSE_RANK</code>, running share</td></tr>
+      <tr><td>q03</td><td>Is business growing, once we smooth out the bumpy days?</td><td>7-day rolling <code>AVG</code>, <code>LAG</code></td></tr>
+      <tr><td>q04</td><td>Which city brings dinner fastest, and which is slowest?</td><td>Median and p90 by hand, SLA %</td></tr>
+      <tr><td>q05</td><td>How much slower is dinner at rush hour than at quiet times?</td><td><code>CASE</code> dayparts, window total</td></tr>
+      <tr><td>q06</td><td>Which restaurants are the top 3 in each city?</td><td><code>DENSE_RANK … PARTITION BY</code></td></tr>
+      <tr><td>q07</td><td>Who are the best delivery riders: the busiest, or the fastest?</td><td>Two rankings at once</td></tr>
+      <tr><td>q08</td><td>When do people want taxis, and when is it hard to get one?</td><td>Centred 3-hour rolling average</td></tr>
+      <tr><td>q09</td><td>Which drivers earn the most for each vehicle type?</td><td><code>DENSE_RANK … PARTITION BY</code></td></tr>
+      <tr><td>q10</td><td>Which day-and-hour combos are the hottest?</td><td>Pre-aggregated CTE, window sum</td></tr>
+      <tr><td>q11</td><td>Which days were strangely slow?</td><td>Window frame on the prior 14 days, variance</td></tr>
+      <tr><td>q12</td><td>How much did each city grow month to month?</td><td><code>LAG</code>, share of total</td></tr>
+      <tr><td>q13</td><td>When taxis cost more, do fewer people get rides?</td><td>Bucketing and a join to weather</td></tr>
+      <tr><td>q14</td><td>Does rain make food late?</td><td>Join, <code>LAG</code> over an aggregate</td></tr>
+    </tbody></table></div>
+</section>
+
+<section id="found">
+  <span class="kicker">The answers</span>
+  <h2>What the run found</h2>
+  <div class="kid"><small>Like you're five</small>Dinner is slow when everybody is hungry at once. Dinner is also slow when it rains. And when taxis get expensive, fewer people get a taxi at all.</div>
+
+  <h3>Delivery time by city (q04), average minutes</h3>
+  <div class="bars" role="img" aria-label="Average delivery minutes: Chennai 30.9, Pune 31.5, Hyderabad 31.8, Delhi NCR 32.2, Mumbai 33.5, Bengaluru 34.3">
+    <div class="bar"><span>Chennai</span><div class="track"><div class="fill" style="width:90%"></div></div><b>30.9</b></div>
+    <div class="bar"><span>Pune</span><div class="track"><div class="fill" style="width:91.8%"></div></div><b>31.5</b></div>
+    <div class="bar"><span>Hyderabad</span><div class="track"><div class="fill" style="width:92.7%"></div></div><b>31.8</b></div>
+    <div class="bar"><span>Delhi NCR</span><div class="track"><div class="fill" style="width:93.9%"></div></div><b>32.2</b></div>
+    <div class="bar"><span>Mumbai</span><div class="track"><div class="fill" style="width:97.7%"></div></div><b>33.5</b></div>
+    <div class="bar"><span>Bengaluru</span><div class="track"><div class="fill hot" style="width:100%"></div></div><b>34.3</b></div>
+  </div>
+  <p class="chartcap">Bars start at zero, so the differences look small. They matter at this scale: only 36% of Bengaluru orders arrive within 30 minutes, against 51% in Chennai.</p>
+
+  <h3>Dry day versus rainy day (q14), average minutes</h3>
+  <div class="bars" role="img" aria-label="Rain adds 3 to 4.2 minutes in every city">
+    <div class="bar"><span>Bengaluru</span><div class="track"><div class="fill" style="width:88%"></div></div><b>33.8</b></div>
+    <div class="bar"><span>+ rain</span><div class="track"><div class="fill hot" style="width:100%"></div></div><b>37.8</b></div>
+    <div class="bar"><span>Mumbai</span><div class="track"><div class="fill" style="width:87.5%"></div></div><b>33.1</b></div>
+    <div class="bar"><span>+ rain</span><div class="track"><div class="fill hot" style="width:98.4%"></div></div><b>37.2</b></div>
+  </div>
+
+  <div class="grid">
+    <div class="finding"><b>Demand is concentrated</b><p>Hours 12–13 and 19–21 carry 46% of all food orders.</p></div>
+    <div class="finding"><b>Rush hour costs about 6 minutes</b><p>About 35 minutes at lunch and dinner against about 29 otherwise. Cancellations rise to about 3.5%.</p></div>
+    <div class="finding"><b>Rain makes the bad days</b><p>40 of the 43 flagged slow city-days were rainy.</p></div>
+    <div class="finding"><b>Steady growth with a weekly beat</b><p>The 7-day average goes from about 770 to about 1,025 orders a day. Weekends are about 18% higher.</p></div>
+    <div class="finding"><b>Cab supply is stretched at commute time</b><p>Hours 8–9 and 17–19 average 1.39x surge and about 20% unfulfilled requests. Other hours average 1.07x and about 12%.</p></div>
+    <div class="finding"><b>Surge trades completion for price</b><p>On dry days, completion falls from 88.3% to 80.8% as surge climbs to 1.5–1.99x.</p></div>
+    <div class="finding"><b>Busiest is not fastest</b><p>Bengaluru's top partner by volume (894 deliveries) ranks 22nd on speed.</p></div>
+  </div>
+  <p class="grown">These are properties of the invented data, not real company results.</p>
+</section>
+
+<section id="words">
+  <span class="kicker">Dictionary</span>
+  <h2>Big words made small</h2>
+  <dl>
+    <div><dt>SQL</dt><dd>The language you use to ask a database questions.</dd></div>
+    <div><dt>SQLite</dt><dd>A tiny database that lives in a single file, <code>food_ride.db</code>.</dd></div>
+    <div><dt>CSV</dt><dd>A plain text spreadsheet. Each line is a row and commas split the columns.</dd></div>
+    <div><dt>Synthetic data</dt><dd>Pretend data that a program made up.</dd></div>
+    <div><dt>Pipeline</dt><dd>A chain of steps where each step hands its result to the next.</dd></div>
+    <div><dt>Window function</dt><dd>A way to compare each row with its neighbours, like "how does today compare with the last 7 days?"</dd></div>
+    <div><dt>DENSE_RANK</dt><dd>Gives 1st, 2nd, 3rd place. Ties share a place and nobody skips a number.</dd></div>
+    <div><dt>Rolling average</dt><dd>An average over the last few days that slides forward. It smooths bumpy lines.</dd></div>
+    <div><dt>p50 and p90</dt><dd>p50 is the middle delivery. p90 means 9 out of 10 deliveries were this fast or faster.</dd></div>
+    <div><dt>SLA</dt><dd>A promise about speed. Here it is "delivered within 30 minutes".</dd></div>
+    <div><dt>Surge</dt><dd>A price multiplier that kicks in when many people want rides at once.</dd></div>
+    <div><dt>GMV</dt><dd>Gross merchandise value: the total money that orders and fares add up to.</dd></div>
+  </dl>
+</section>
+
+<footer>Built from the files in your project folder and the output of <code>python run_pipeline.py</code> on your machine.</footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.getAttribute('data-t'));
+    var txt=el.textContent;
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
+    try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(e){fallback()}
+  });
+});
+</script>

@@ -1,0 +1,19 @@
+city_name,city_rank,restaurant_name,cuisine,delivered_orders,revenue_inr,avg_delivery_min,avg_rating
+Bengaluru,1,Punjabi Kitchen,Street Food,2535,872289.0,35.5,4.08
+Bengaluru,2,Wok Kitchen,Desserts,1873,646932.0,30.4,4.24
+Bengaluru,3,Madras Junction,Pizza,1635,548449.0,33.9,4.13
+Chennai,1,Madras Hub,Street Food,1125,386985.0,29.8,4.3
+Chennai,2,Slice House,Pizza,923,312665.0,31.1,4.27
+Chennai,3,Urban Hub,Street Food,664,217627.0,30.1,4.34
+Delhi NCR,1,Dosa House,Street Food,2149,735250.0,37.4,4.04
+Delhi NCR,2,Royal Hub,Healthy,1562,528179.0,28.1,4.26
+Delhi NCR,3,Chaat Kitchen,North Indian,943,320206.0,33.3,4.13
+Hyderabad,1,Green Express,Healthy,1044,349539.0,35.7,4.13
+Hyderabad,2,Wok House,North Indian,828,279347.0,34.1,4.14
+Hyderabad,3,Tandoor Palace,South Indian,736,241692.0,30.1,4.29
+Mumbai,1,Tandoor Corner,Desserts,2993,1001952.0,31.5,4.22
+Mumbai,2,Golden Dhaba,South Indian,1643,546991.0,35.0,4.1
+Mumbai,3,Spice House,South Indian,1482,507500.0,35.4,4.14
+Pune,1,Urban Palace,Desserts,1308,441647.0,35.7,4.12
+Pune,2,Slice Palace,North Indian,799,268087.0,30.3,4.31
+Pune,3,Spice Express,Desserts,415,139736.0,32.9,4.13

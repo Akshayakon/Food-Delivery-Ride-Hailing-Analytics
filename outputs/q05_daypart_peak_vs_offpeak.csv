@@ -1,0 +1,25 @@
+city_name,daypart,orders,avg_delivery_min,cancel_pct,vs_city_avg_min
+Bengaluru,Dinner rush (19-22),5656,36.9,3.7,2.6
+Bengaluru,Late night (0-4),452,30.5,2.43,-3.8
+Bengaluru,Lunch rush (12-14),4192,37.1,3.34,2.8
+Bengaluru,Other,6682,30.6,2.33,-3.7
+Chennai,Dinner rush (19-22),3158,33.2,3.8,2.3
+Chennai,Late night (0-4),272,27.7,3.31,-3.2
+Chennai,Lunch rush (12-14),2280,33.4,2.98,2.5
+Chennai,Other,3701,27.8,2.73,-3.1
+Delhi NCR,Dinner rush (19-22),5610,34.9,3.49,2.7
+Delhi NCR,Late night (0-4),446,28.8,1.79,-3.4
+Delhi NCR,Lunch rush (12-14),4170,34.6,3.31,2.4
+Delhi NCR,Other,6724,28.9,2.25,-3.3
+Hyderabad,Dinner rush (19-22),3933,34.4,3.03,2.6
+Hyderabad,Late night (0-4),322,28.3,2.17,-3.5
+Hyderabad,Lunch rush (12-14),2848,34.5,3.41,2.7
+Hyderabad,Other,4847,28.4,2.17,-3.4
+Mumbai,Dinner rush (19-22),5366,35.8,3.8,2.3
+Mumbai,Late night (0-4),418,29.4,2.39,-4.1
+Mumbai,Lunch rush (12-14),3903,36.4,3.82,2.9
+Mumbai,Other,6445,30.0,2.51,-3.5
+Pune,Dinner rush (19-22),2846,34.2,3.76,2.7
+Pune,Late night (0-4),209,27.6,3.83,-3.9
+Pune,Lunch rush (12-14),2057,34.3,3.84,2.8
+Pune,Other,3455,28.0,2.26,-3.5

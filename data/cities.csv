@@ -1,0 +1,7 @@
+city_id,city_name,demand_weight,traffic_factor
+1,Bengaluru,1.0,1.25
+2,Mumbai,0.95,1.2
+3,Delhi NCR,1.0,1.1
+4,Hyderabad,0.7,1.0
+5,Chennai,0.55,1.0
+6,Pune,0.5,0.95
